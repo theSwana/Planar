@@ -1,0 +1,58 @@
+.gallery {
+    --s: 235px; /* control the size */
+    --g: 10px;  /* control the gap */
+    --f: 1.5;   /* control the scale factor */
+    
+    display: grid;
+    gap: var(--g);
+    width: 100%; /* Make the gallery take up full width */
+    grid-template-columns: repeat(auto-fit, minmax(var(--s), 1fr));
+    justify-content: center; /* Center the images */
+  }
+  
+  .gallery > img {
+    width: 100%; /* Ensure images are visible and take full width of grid cell */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    cursor: pointer;
+    filter: grayscale(80%);
+    transition: .35s linear;
+    position: relative; /* Ensure z-index works properly */
+    z-index: 1; /* Base z-index */
+  }
+  
+  .gallery img:hover {
+    filter: grayscale(0);
+    transform: scale(var(--f)); /* Use transform for better scaling effect */
+    z-index: 10; /* Bring the hovered image to the front */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .gallery {
+      --s: 150px; /* Smaller size for tablets */
+      --g: 8px;   /* Smaller gap */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery {
+      --s: 120px; /* Smaller size for mobile */
+      --g: 6px;   /* Smaller gap */
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.2); /* Adjust hover effect for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr); /* Only two columns on small screens */
+    }
+  }
+  
+  
+  
+  
+  
